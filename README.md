@@ -59,3 +59,15 @@ The output is a class with the following properties (sample values provided for 
 | LastUsedType         | n;1;c:\program files (x86)\microsoft office\root\integration\ |
 | MediaPackagePath     | |
 | DiskPrompt           | |
+
+### Fancy usage
+Get all products from Microsoft, and output the list to a HTML file with a custom CSS and a bunch of properties:
+
+    $Header = @"
+    <style>
+    TABLE {border: 1px solid gray collapse; }
+    TH { border: 1px solid gray; padding: 6px 4px; background-color: #eaeaea; }
+    TD { border: 1px solid gray; padding: 4px; }
+    </style>
+    "@
+    Get-MsiClientPackage | where { $_.Publisher -contains 'Microsoft Corporation' } | sort-object -Property ProductName | ConvertTo-Html -Property ProductCode,PackageName,ProductName,VersionString,Language,Publisher -Head $Header | Out-File c:\temp\test.html
