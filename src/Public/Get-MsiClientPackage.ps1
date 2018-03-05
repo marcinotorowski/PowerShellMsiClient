@@ -44,7 +44,7 @@ function Get-MsiClientPackage
 		
 		if ((-not $specific) -or ($parsedGuid -eq $actualGuid))
 		{
-			$c = New-Object MsiProductInfo;
+			$c = New-Object MsiClientPackage;
 			$c.ProductCode = $parsedGuid;	
 			$c.PackageName = Get-MsiProperty $guid "PackageName" $tempStringBuilder;
 			$c.ProductName = Get-MsiProperty $guid "ProductName" $tempStringBuilder;

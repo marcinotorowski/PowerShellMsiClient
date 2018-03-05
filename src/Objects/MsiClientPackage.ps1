@@ -1,4 +1,4 @@
-class MsiProductInfo
+class MsiClientPackage
 {
     [Guid]$ProductCode;
     [string]$ProductID;
