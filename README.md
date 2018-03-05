@@ -3,21 +3,24 @@
 This is a small PowerShell module project which aims at exposing Windows Installer API through a PowerShell interface, which is highly inspired by the layout and use of AppVClient module.
 ## Importing
 Either copy the files to a system-recognized location or make sure they are in your working directory, and then import the module
-
-    Import-Module MsiClient
-
+```powershell
+Import-Module MsiClient
+```
 ## Samples
 ### Getting all packages
-    Get-MsiClientPackage
+```powershell
+Get-MsiClientPackage
+```
 For available properties, see the next example.
 
 ### Getting specific packages by GUID (ProductCode)
-    Get-MsiClientPackage -PackageId 90160000-008c-0000-0000-0000000ff1ce
-
+```powershell
+Get-MsiClientPackage -PackageId '90160000-008c-0000-0000-0000000ff1ce'
+````
 or
-
-    Get-MsiClientPackage 90160000-008c-0000-0000-0000000ff1ce
-
+```powershell
+Get-MsiClientPackage '90160000-008c-0000-0000-0000000ff1ce'
+```
 The output is a class with the following properties (sample values provided for a reference):
 
 | Property | Value |
@@ -62,12 +65,13 @@ The output is a class with the following properties (sample values provided for 
 
 ### Fancy usage
 Get all products from Microsoft, and output the list to a HTML file with a custom CSS and a bunch of properties:
-
-    $Header = @"
-    <style>
-    TABLE {border: 1px solid gray collapse; }
-    TH { border: 1px solid gray; padding: 6px 4px; background-color: #eaeaea; }
-    TD { border: 1px solid gray; padding: 4px; }
-    </style>
-    "@
-    Get-MsiClientPackage | where { $_.Publisher -contains 'Microsoft Corporation' } | sort-object -Property ProductName | ConvertTo-Html -Property ProductCode,PackageName,ProductName,VersionString,Language,Publisher -Head $Header | Out-File c:\temp\test.html
+```powershell
+$Header = @"
+  <style>
+  TABLE {border: 1px solid gray collapse; }
+  TH { border: 1px solid gray; padding: 6px 4px; background-color: #eaeaea; }
+  TD { border: 1px solid gray; padding: 4px; }
+</style>
+"@
+Get-MsiClientPackage | where { $_.Publisher -contains 'Microsoft Corporation' } | sort-object -Property ProductName | ConvertTo-Html -Property ProductCode,PackageName,ProductName,VersionString,Language,Publisher -Head $Header | Out-File c:\temp\test.html
+````
