@@ -81,6 +81,16 @@ The property Properties is a dictionary which contains all values available at t
 | MediaPackagePath     | |
 | DiskPrompt           | |
 
+### Uninstalling a package
+```powershell
+Remove-MsiClientPackage -PackageId '90160000-008c-0000-0000-0000000ff1ce'
+```
+This removes a package with a given GUID. The GUID/package can be passed via pipeline, so the following is possible:
+```powershell
+Get-MsiClientPackage | where { $_.ProductName -contains 'Microsoft' } | Remove-MsiClientPackage
+```
+This removes all products from Microsoft :).
+
 ### Fancy usage
 Get all products from Microsoft, and output the list to a HTML file with a custom CSS and a bunch of properties:
 ```powershell

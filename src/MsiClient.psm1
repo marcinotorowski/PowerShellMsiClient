@@ -15,4 +15,4 @@ foreach($file in @($files_domain + $files_private + $files_public))
 	}
 }
 
-Export-ModuleMember -Function Get-MsiClientPackage
+Export-ModuleMember -Function Get-MsiClientPackage,Remove-MsiClientPackage

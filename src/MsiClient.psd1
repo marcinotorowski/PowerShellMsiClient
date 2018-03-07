@@ -24,7 +24,7 @@ Description = 'PowerShell module for Windows Installer automation'
 PowerShellVersion = '3.0'
 
 # Functions to export from this module
-FunctionsToExport = 'Get-MsiClientPackage'
+FunctionsToExport = @('Get-MsiClientPackage', 'Remove-MsiClientPackage')
 
 # Cmdlets to export from this module
 CmdletsToExport = '*'
