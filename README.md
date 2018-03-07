@@ -23,7 +23,25 @@ Get-MsiClientPackage '90160000-008c-0000-0000-0000000ff1ce'
 ```
 The output is a class with the following properties (sample values provided for a reference):
 
-| Property | Value |
+````
+ProductCode   : 90160000-008c-0000-0000-0000000ff1ce
+PackageCode   : 7afb57da-76ca-4406-8979-ad7fd1365320
+ProductName   : Office 16 Click-to-Run Extensibility Component
+VersionString : 16.0.9029.2167
+Language      : 0
+Publisher     : Microsoft Corporation
+PackageName   : C2RInt.16.msi
+Transforms    :
+InstallSource : c:\program files (x86)\microsoft office\root\integration\
+InstallDate   : 04.03.2018 00:00:00
+Properties    : {[ProductCode, {90160000-008C-0000-0000-0000000FF1CE}], [PackageCode, {7AFB57DA-76CA-4406
+                -8979-AD7FD1365320}], [PackageName, C2RInt.16.msi], [ProductName, Office 16 Click-to-Run
+                Extensibility Component]...}
+````
+
+The property Properties is a dictionary which contains all values available at the time of reading, for example:
+
+| Key | Value |
 |--|--|
 | ProductCode          | 90160000-008c-0000-0000-0000000ff1ce |
 | ProductID            | |
